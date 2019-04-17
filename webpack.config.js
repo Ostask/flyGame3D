@@ -1,11 +1,17 @@
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js'
   },
+  plugins: [
+    new htmlWebpackPlugin({
+        template: 'index.html'
+    })
+  ],
   module: {
     rules: [
         {
@@ -14,7 +20,15 @@ module.exports = {
             'style-loader',
             'css-loader'
             ]
+        },
+        {
+            test: /\.styl$/,
+            use: [
+            'style-loader',
+            'css-loader',
+            'stylus-loader'
+            ]
         }
-        ]
-    }
+    ]
+  }
 };
