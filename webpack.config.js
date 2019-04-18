@@ -12,6 +12,9 @@ module.exports = {
         template: 'index.html'
     })
   ],
+  devServer: {
+    contentBase: './dist'
+  },
   module: {
     rules: [
         {
@@ -28,6 +31,18 @@ module.exports = {
             'css-loader',
             'stylus-loader'
             ]
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          loader: 'url-loader',
+          options: {
+              limit: 100000,
+              outputPath: 'images/'
+          }
+        },
+        {
+          test: /\.(htm|html)$/,
+          use: 'html-withimg-loader'
         }
     ]
   }

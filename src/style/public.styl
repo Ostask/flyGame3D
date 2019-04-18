@@ -3,9 +3,62 @@
     padding:0;
 }
 .window-mask{
+    display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.1)
     .window-wrapper{
+        width:400px;
+        height:250px;
+        background:#fff;
+        border-radius: 4px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin-left:-200px;
+        margin-top:-125px;
+        .close{
+            position:absolute;
+            top:20px;
+            right:20px;
+            svg{
+                width:20px;
+                height:20px;
+                fill: #aaa;
+                cursor: pointer;
+                transition:fill 0.3s;
+                &:hover{
+                    fill:#000
+                }
+            }
+        }
         .window-title{
-            color:red;
+            font-size:18px;
+            padding:20px;
+        }
+        .window-content{
+            padding:20px;
+            text-align:center;
+        }
+        .window-footer{
+            text-align:center;
+            position:absolute;
+            bottom:20px;
+            width:100%;
+            button{
+                border:none;
+                padding:10px 20px;
+                background-color:#77d277;
+                border-radius: 2px;
+                transition: background 0.3s;
+                cursor: pointer
+                &:hover{
+                    background-color: #55b555;
+                }
+            }
         }
     }
 }
