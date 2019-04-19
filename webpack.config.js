@@ -37,8 +37,14 @@ module.exports = {
           loader: 'url-loader',
           options: {
               limit: 100000,
-              outputPath: 'images/'
+              outputPath: 'img/'
           }
+        },
+        {
+          test: /\.BMP$/,
+          use: [{
+            loader: 'file-loader?name=img/[name].[ext]' //打包后在img目录下
+          }]
         },
         {
           test: /\.(htm|html)$/,
