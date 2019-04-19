@@ -49,6 +49,14 @@ module.exports = {
         {
           test: /\.(htm|html)$/,
           use: 'html-withimg-loader'
+        },
+        {
+          test: require.resolve("three/examples/js/controls/OrbitControls"),
+          use: "imports-loader?THREE=three"
+        },
+        {
+          test: require.resolve("three/examples/js/controls/OrbitControls"),
+          use: "exports-loader?THREE.OrbitControls"
         }
     ]
   }

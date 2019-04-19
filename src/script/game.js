@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import OrbitControls from "three/examples/js/controls/OrbitControls"
 import '../img/riverside_down.BMP'
 import '../img/riverside_east.BMP'
 import '../img/riverside_north.BMP'
@@ -68,6 +69,7 @@ class GAME {
 
         this.scene.background = textureCube; //作为背景贴图
         //初始化飞机
+        console.log(OrbitControls)
 
     }
     animate(){
