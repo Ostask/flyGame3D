@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,13 +9,11 @@ module.exports = {
     filename: '[name].js'
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
         template: 'index.html'
     })
   ],
-  devServer: {
-    contentBase: './dist'
-  },
   module: {
     rules: [
         {
@@ -47,6 +46,12 @@ module.exports = {
           }]
         },
         {
+            test: /\.dae$/,
+            use: [{
+              loader: 'file-loader?name=models/[name]/[name].[ext]' //打包后在img目录下
+            }]
+          },
+        {
           test: /\.(htm|html)$/,
           use: 'html-withimg-loader'
         },
@@ -57,6 +62,14 @@ module.exports = {
         {
           test: require.resolve("three/examples/js/controls/OrbitControls"),
           use: "exports-loader?THREE.OrbitControls"
+        },
+        {
+            test: require.resolve("three/examples/js/loaders/ColladaLoader"),
+            use: "imports-loader?THREE=three"
+        },
+        {
+            test: require.resolve("three/examples/js/loaders/ColladaLoader"),
+            use: "exports-loader?THREE.ColladaLoader"
         }
     ]
   }

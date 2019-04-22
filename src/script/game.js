@@ -1,11 +1,14 @@
 import * as THREE from 'three'
 import OrbitControls from "three/examples/js/controls/OrbitControls"
+import ColladaLoader from "three/examples/js/loaders/ColladaLoader"
 import '../img/riverside_down.BMP'
 import '../img/riverside_east.BMP'
 import '../img/riverside_north.BMP'
 import '../img/riverside_south.BMP'
 import '../img/riverside_up.BMP'
 import '../img/riverside_west.BMP'
+import "../models/elf/elf.dae"
+
 
 
 class GAME {
@@ -68,8 +71,16 @@ class GAME {
         var textureCube = new THREE.CubeTextureLoader().load( urls );
 
         this.scene.background = textureCube; //作为背景贴图
+
+        var elf
         //初始化飞机
-        console.log(OrbitControls)
+        var loadingManager = new THREE.LoadingManager(()=>{
+            this.scene.add( elf );
+        } );
+        var loader = new THREE.ColladaLoader( loadingManager );
+        loader.load( '../models/elf/elf.dae', function ( collada ) {
+            elf = collada.scene;
+        } );
 
     }
     animate(){
