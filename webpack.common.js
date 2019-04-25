@@ -46,11 +46,11 @@ module.exports = {
           }]
         },
         {
-            test: /\.dae$/,
-            use: [{
-              loader: 'file-loader?name=models/[name]/[name].[ext]' //打包后在img目录下
-            }]
-          },
+          test: /models\/*/,
+          use: [{
+            loader: 'file-loader?name=models/[name].[ext]' //打包后在img目录下
+          }]
+        },
         {
           test: /\.(htm|html)$/,
           use: 'html-withimg-loader'
